@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedPortal Connect</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../scripts/script.js"></script>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-image">
+            <img src="/images/login.jpeg" alt="Medical Image">
+        </div>
+        <div class="login-form">
+            <h1>Welcome to the MedPortal Connect</h1>
+            <form action="../server/dao/loginDAO.php" method="post" onsubmit="return validateLogin()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+</body>
+
+</html>
