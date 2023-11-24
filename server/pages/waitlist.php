@@ -63,8 +63,10 @@
 
             <fieldset>
                 <legend><b>Your Waitlist Status</b></legend>
-                <button type='button' class='add-button' onclick='showProviderDialog()'>Add</button>
-
+                <div class="add-button-container">
+                <button type='button' class='add-button' onclick='showProviderDialog()'>Add</button> </div>
+                <label for="providerFilter">Filter by Provider Name:</label>
+                <input type="text" id="providerFilter" oninput="filterTable()">
                 <table>
                     <thead>
                         <tr>
@@ -76,7 +78,6 @@
                         </tr>
                     </thead>
 
-
                     <tbody>
                         <?php
                         require_once('../dao/userWaitlistDAO.php');
@@ -85,8 +86,9 @@
                         $providerDAO = new ProviderDAO();
                         $userWaitlistData = $userWaitlistDAO->getUserWaitlistByUserId();
                         if ($userWaitlistData) {
+                            $rowCount = 0;
                             foreach ($userWaitlistData as $item) {
-                                echo "<tr>";
+                                echo "<tr id='row{$rowCount}'>";
                                 echo "<td>{$item->getPosition()}</td>";
                                 $providerName = $providerDAO->getProviderNameById($item->getProviderId());
                                 echo "<td>{$providerName}</td>";
@@ -94,12 +96,14 @@
                                 echo "<td>{$item->getStatus()}</td>";
                                 echo "<td><button type='button' class='delete-button' data-user-waitlist-id='{$item->getId()}' onclick='deleteUserWaitlist(this)'>Delete</button></td>";
                                 echo "</tr>";
+                                $rowCount++;
                             }
                         } else {
                             echo "<p>No waitlist preferences found.</p>";
                         }
                         ?>
                     </tbody>
+
                 </table>
             </fieldset>
 

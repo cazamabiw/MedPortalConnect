@@ -423,3 +423,15 @@ h1 {
 #locationSelect option:hover {
     background-color: #CFE4EE;
 }
+
+#providerFilter {
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.add-button-container {
+    text-align: right;
+   margin-right: 35px;
+}
